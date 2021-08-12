@@ -3,12 +3,13 @@
   "version": "1.16.15",
   "description": "Utility functions for interacting with AWS APIs",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "mocha ./test/index.spec.js",
     "update-install": "npm update; npm install;",
-    "pub-major": "bash ./publish.sh -v major",
-    "pub-minor": "bash ./publish.sh -v minor",
-    "pub-patch": "bash ./publish.sh -v patch",
+    "pub-major": "tsc && bash ./publish.sh -v major",
+    "pub-minor": "tsc && bash ./publish.sh -v minor",
+    "pub-patch": "tsc && bash ./publish.sh -v patch",
     "unpublish-single-version": "npm unpublish <package-name>@<version>"
   },
   "repository": {
@@ -40,6 +41,8 @@
     "@unegma/logger": "^1.5.21",
     "@unegma/utilities": "latest",
     "aws-sdk": "^2.773.0",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "tsc": "^2.0.3",
+    "typescript": "^4.3.5"
   }
 }

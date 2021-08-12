@@ -105,3 +105,6 @@ dist
 
 # IDE
 .idea/
+
+# todo move everything to a build folder babel/webpack may need to specify publish folder
+*.d.ts
