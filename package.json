@@ -10,7 +10,7 @@
   "scripts": {
     "test": "mocha ./test/index.spec.js",
     "update-install": "npm update; npm install;",
-    "build": "babel lib -d dist --ignore lib/**/*.test.js,**/tests/** && tsc",
+    "build": "rm -R ./dist && babel lib -d dist --ignore lib/**/*.test.js,**/tests/** && tsc",
     "pub-major": "npm run-script build; bash ./publish.sh -v major",
     "pub-minor": "npm run-script build; bash ./publish.sh -v minor",
     "pub-patch": "npm run-script build; bash ./publish.sh -v patch",
