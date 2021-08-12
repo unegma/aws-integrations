@@ -2,14 +2,18 @@
   "name": "@unegma/aws-utilities",
   "version": "1.16.15",
   "description": "Utility functions for interacting with AWS APIs",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "mocha ./test/index.spec.js",
     "update-install": "npm update; npm install;",
-    "pub-major": "tsc && bash ./publish.sh -v major",
-    "pub-minor": "tsc && bash ./publish.sh -v minor",
-    "pub-patch": "tsc && bash ./publish.sh -v patch",
+    "build": "babel lib -d dist --ignore lib/**/*.test.js,**/tests/** && tsc",
+    "pub-major": "npm run-script build; bash ./publish.sh -v major",
+    "pub-minor": "npm run-script build; bash ./publish.sh -v minor",
+    "pub-patch": "npm run-script build; bash ./publish.sh -v patch",
     "unpublish-single-version": "npm unpublish <package-name>@<version>"
   },
   "repository": {
@@ -37,6 +41,8 @@
     "sinon-chai": "^3.5.0"
   },
   "dependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
     "@unegma/error-handler": "^1.4.18",
     "@unegma/logger": "^1.5.21",
     "@unegma/utilities": "latest",
